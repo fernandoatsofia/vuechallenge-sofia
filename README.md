@@ -23,7 +23,7 @@ import axios from 'axios';
 
 const url = 'https://jsonplaceholder.typicode.com/users'
 
-listService = () => {
+const listService = () => {
   axios.get('/user?ID=12345')
   .then((response) => {
     // handle success
@@ -40,10 +40,10 @@ export default listService;
 
 ### Alternativas a Axios:
 
-Fetch API https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
-Superagent https://visionmedia.github.io/superagent/
+  - Fetch API https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+  - Superagent https://visionmedia.github.io/superagent/
 
 ### Alternativas a JSONPlaceholder:
 
-https://reqres.in/
-https://randomuser.me/
+  - https://randomuser.me/
+  - https://reqres.in/
