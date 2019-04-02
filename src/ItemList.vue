@@ -1,7 +1,7 @@
 <template>
   <ul class="ItemList">
     <li
-      v-for="item in sortedData"
+      v-for="item in listData"
       :key="item.id"
       class="ItemList-item"
     >
@@ -20,22 +20,32 @@ export default {
       required: true,
       type: Array,
     },
+    sort: {
+      type: Boolean,
+      defautl: false,
+    },
   },
   computed: {
+    listData() {
+      const { sort, data, sortedData } = this;
+      return sort ? sortedData : data;
+    },
     sortedData() {
       const { data } = this;
-      return data.sort((a, b) => {
-        const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        // names must be equal
-        return 0;
-      });
+      return [...data]
+        // Sort by name
+        .sort((a, b) => {
+          const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
+        });
     },
   },
 };
