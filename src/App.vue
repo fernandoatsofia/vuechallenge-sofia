@@ -5,7 +5,11 @@
       <item-list
         v-else
         :data="itemListData"
+        :sort="sortListData"
       ></item-list>
+      <div class="App-btn" @click="sortListData = !sortListData">
+        SORT
+      </div>
     </template>
   </div>
 </template>
@@ -22,6 +26,7 @@ export default {
   data() {
     return {
       itemListData: null,
+      sortListData: false,
       loadError: false,
       loaded: false,
     };
@@ -46,5 +51,14 @@ export default {
 <style lang="scss">
 .App {
   font-family:'Courier New', Courier, monospace;
+}
+
+.App-btn {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  user-select: none;
+  cursor: pointer;
 }
 </style>
